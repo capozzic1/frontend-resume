@@ -11,7 +11,7 @@ h5,
 h6 {
   padding: 0;
   margin: 0;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Fira Sans', sans-serif;
 }
 
 .clear-fix {
@@ -26,7 +26,7 @@ h6 {
 
 h1 {
   font-size: 40px;
-  color: #f5a623;
+  color: deepskyblue;
   line-height: 48px;
   display: inline;
 }
@@ -34,7 +34,7 @@ h1 {
 h2 {
   font-weight: bold;
   font-size: 24px;
-  color: #999;
+  color: darkslateblue;
   line-height: 29px;
   padding: 10px;
 }
@@ -73,10 +73,18 @@ h5 {
 .location-text {
   font-style: italic;
   font-size: 14px;
-  color: #999;
+  color: darkslateblue;
   line-height: 16px;
   float: right;
 
+}
+
+.couURL { 
+font-weight: initial;
+}
+
+.work-entry p {
+    padding: 10px 0;
 }
 
 p {
@@ -86,10 +94,11 @@ p {
 }
 
 a {
-  color: #1199c3;
-  text-decoration: none;
-  margin-top: 10px;
-  display: block;
+    color: darkslateblue;
+    text-decoration: none;
+    margin-top: 10px;
+    display: block;
+    font-weight: bold;
 }
 
 .welcome-message {
@@ -105,14 +114,15 @@ a {
 }
 
 .orange {
-  background-color: #f5ae23;
+  color: white;
+  background-color: #484848;
 }
 
-.orange-text {
-  color: #f5ae23;
+.blue-text {
+  color: deepskyblue;
 }
 
-.white-text {
+.white-text, .role{
   font-weight: bold;
   color: #fff;
 }
@@ -121,6 +131,15 @@ a {
   background-color: #f3f3f3;
   padding-bottom: 10px;
   clear: both;
+}
+
+
+#education li {
+    padding: 17px 0;
+}
+
+#workExperience a {
+    padding: 12px 0px;
 }
 
 .dark-gray {
@@ -157,14 +176,15 @@ ul {
 }
 
 .biopic {
-  float: left;
-  padding: 10px;
-  width: 200px;
-  display: none;
+    float: left;
+    /* padding: 10px; */
+    width: 200px;
+    display: none;
+    border: 2px solid darkslateblue;
 }
 
-img {
-  padding: 10px;
+#projects img {
+    padding: 21px 0px;
 }
 
 span {
