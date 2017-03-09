@@ -228,7 +228,7 @@ var model = {
 		var schoolArr = [];
 		
 		var schStart = HTMLschoolName.replace("%data%", model.education.schools[0].name);
-		var degree = HTMLschoolDegree.replace("%data", model.education.schools[0].degree);
+		var degree = HTMLschoolDegree.replace("%data%", model.education.schools[0].degree);
 		var dates = HTMLschoolDates.replace("%data%", model.education.schools[0].dates);
 		var location = HTMLschoolLocation.replace("%data%", model.education.schools[0].location);
 		var major = HTMLschoolMajor.replace("%data%", model.education.schools[0].major);
@@ -244,7 +244,7 @@ var model = {
 							  "</li>";
 		});
 		
-		schoolArr.push([HTMLschoolStart,schStart,degree,dates,location,major]);
+		schoolArr.push([HTMLschoolStart,schStart,degree,dates,location,major],[HTMLonlineClasses,onlineClasses]);
 		
 		return schoolArr;
 		//console.log(onlineClasses);
@@ -280,11 +280,8 @@ var model = {
 	formatProj(){
 		//give start to view and add ul, then add projs li 
 		var HTMLprojectStart = '<div class="project-entry"></div>';
-		var HTMLprojectTitle = '<a href="#">%data%</a>';
-		var HTMLprojectDates = '<div class="date-text">%data%</div>';
-		var HTMLprojectDescription = '<p><br>%data%</p>';
-		var HTMLprojectImage = '<img src="%data%">';
-		
+
+		let projArr = [];
 		 projs = "";
 		
 		$.each(model.projects,(i, proj) => {
@@ -294,7 +291,9 @@ var model = {
 			HTMLprojectImage.replace("%data%", proj.images) + 
 			"</li>";
 		});
+		projArr.push(HTMLprojectStart,projs);
 		
+		return projArr;
 		//$('body').append(projs);
 	},
 	
@@ -304,6 +303,7 @@ var model = {
 		init(){
 		this.showBio();
 		this.showEdu();
+		this.showProj();
 		},
 		
 		showBio(){
@@ -323,9 +323,18 @@ var model = {
 			console.log(eduInfo);
 			$('#education').append(eduInfo[0][0]);
 			for (let i = 1; i < eduInfo[0].length; i++){
-				//$('.education-entry').append(eduInfo[0][i]);
+				$('.education-entry').append(eduInfo[0][i]);
 			};
+			$.each(eduInfo[1],(i,item) =>
+				$('.education-entry').append(eduInfo[1][i])
+			);
 			
+		},
+		showProj(){
+			var projInfo = controller.formatProj();
+			console.log(projInfo);
+			$('#projects').append(projInfo[0]);
+			$('.project-entry').append(projInfo[1]);
 		}
 		
 		
