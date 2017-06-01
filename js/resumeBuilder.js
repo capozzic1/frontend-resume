@@ -1,7 +1,7 @@
 /*
 This is empty on purpose! Your code to build the resume will go here.
-model - bio, edu, work, project objects 
-controller - will get the data from model and pass to the view 
+model - bio, edu, work, project objects
+controller - will get the data from model and pass to the view
 view - the data from the controller put on to the screen
 
  */
@@ -57,8 +57,8 @@ var googleMap = '<div id="map"></div>';
 
 
 
-var model = { 
-	
+var model = {
+
 	bio: {
 		name: "Christopher Capozzi",
 		role: "Instructor",
@@ -70,12 +70,12 @@ var model = {
 		welcomeMessage: "Welcome to my e-resume",
 		skills:["HTML5","CSS","JavaScript","jQuery","ReactJS","git","Chrome Developer Tools","Fire bug","MVC","Sass"],
 		biopic: "https://s21.postimg.org/am1rzzks7/biopic.jpg",
-		
-	
-		
+
+
+
 	},
-	
-	education: { 
+
+	education: {
 		schools: [
 			{
 			name: "University of Nevada, Las Vegas",
@@ -86,7 +86,7 @@ var model = {
 			}
 			],
 		onlineCourses: [
-			{	
+			{
 			title:"Javascript Design Patterns",
 			school:"Udacity",
 			dates:"03/2017-04/2017",
@@ -108,26 +108,26 @@ var model = {
 			title:"Learn ReactJS",
 			school:"Codeacademy",
 			dates:"2017",
-			url: "https://www.codecademy.com/learn/react-101",	
+			url: "https://www.codecademy.com/learn/react-101",
 			},
 			{
 			title:"jQuery",
 			school:"Codeacademy",
 			dates:"2016",
-			url: "https://www.codecademy.com/learn/jquery",	
+			url: "https://www.codecademy.com/learn/jquery",
 			},
 			{
 			title:"PHP",
 			school:"Codeacademy",
 			dates:"2016",
-			url: "https://www.codecademy.com/learn/php",	
+			url: "https://www.codecademy.com/learn/php",
 			}
 			],
-			
-		
-	
+
+
+
 	},
-	
+
 	work: {
 		jobs: [
 		{
@@ -136,7 +136,7 @@ var model = {
 			dates: "03/2016-present",
 			description:"At DGEV, my duty is to teach English to students of all age levels.",
 			location:"Daegu, South Korea"
-	
+
 		},
 		{
 			employer: "Cox Communications",
@@ -160,16 +160,16 @@ var model = {
 		dates:"2016",
 		description:"An app that uses AJAX and uses the open weather API to deliver weather information",
 		images:["https://image.ibb.co/fBTYJv/weather.png"]
-		},	
+		},
 		{
 		title:"A recipe box",
 		dates:"2017",
 		description:"An app where you can create, edit, and delete recipes",
 		images:["https://image.ibb.co/iAi0yv/recipebox.png"]
-		}		
+		}
 
 	],
-	
+
 
 
 }
@@ -181,7 +181,7 @@ var model = {
 		this.formatWork();
 		this.formatProj();
 		view.init();
-		
+
 	},
 	formatBio(){
 
@@ -194,71 +194,71 @@ var model = {
 		var email = HTMLemail.replace("%data%",model.bio.contacts.email);
 		var mobile = HTMLmobile.replace("%data%", model.bio.contacts.mobile);
 		var git = HTMLgithub.replace("%data%",model.bio.contacts.github);
-		var blog = HTMLblog.replace("%data%","http://dreamcap.site88.net/blog/");
+		var blog = HTMLblog.replace("%data%","http://lucidwebdream.com/blog");
 		var location = HTMLlocation.replace("%data%",model.bio.contacts.location);
 		var pic = HTMLbioPic.replace("%data%",model.bio.biopic);
 		var welcome = HTMLwelcomeMsg.replace('%data%',model.bio.welcomeMessage);
-		
+
 		var skills = "";
 		$.each(model.bio.skills,(i,value) => {
 			skills += HTMLskills.replace("%data%",value);
 		});
-		
+
 		bioArr.push(name, role, email, mobile, git, blog, location, pic, welcome);
-		
+
 		return bioArr;
-	
-		
+
+
 
 	},
-	
+
 	formatEdu(){
 
 		var HTMLschoolStart = '<div class="education-entry"></div>';
 		var HTMLonlineClasses = '<h3>Online Classes</h3>';
 		var schoolArr = [];
-		
+
 		var schStart = HTMLschoolName.replace("%data%", model.education.schools[0].name);
 		var degree = HTMLschoolDegree.replace("%data%", model.education.schools[0].degree);
 		var dates = HTMLschoolDates.replace("%data%", model.education.schools[0].dates);
 		var location = HTMLschoolLocation.replace("%data%", model.education.schools[0].location);
 		var major = HTMLschoolMajor.replace("%data%", model.education.schools[0].major);
-		
+
 		var onlineClasses = "";
-		
+
 		$.each(model.education.onlineCourses,(i,value) =>
 		{
 			onlineClasses += "<li>" + HTMLonlineTitle.replace("%data%",value.title) +
 							  HTMLonlineSchool.replace("%data%",value.school) +
-							  HTMLonlineDates.replace("%data%",value.dates) + 
+							  HTMLonlineDates.replace("%data%",value.dates) +
 							  HTMLonlineURL.replace("%data%",value.url) +
 							  "</li>";
 		});
-		
+
 		schoolArr.push([HTMLschoolStart,schStart,degree,dates,location,major],[HTMLonlineClasses,onlineClasses]);
-		
+
 		return schoolArr;
 		////console.log(onlineClasses);
 		//$('body').append(onlineClasses);
 	},
-	
+
 	formatWork(){
 		//maybe pass workstart to the view , append ul to it, then add jobs
 		var HTMLworkStart = '<div class="work-entry"></div>';
 
 		var jobInfo = [];
 		var jobs = "";
-		
-		$.each(model.work.jobs,(i,job) => { 
-			
-			jobs += "<li>" + HTMLworkEmployer.replace("%data%", job.employer) + 
-					HTMLworkTitle.replace("%data%",job.title) + 
-					HTMLworkDates.replace("%data%",job.dates) + 
-					HTMLworkLocation.replace("%data%","Las Vegas, Nevada") + 
-					HTMLworkDescription.replace("%data%",job.description) + 
+
+		$.each(model.work.jobs,(i,job) => {
+
+			jobs += "<li>" + HTMLworkEmployer.replace("%data%", job.employer) +
+					HTMLworkTitle.replace("%data%",job.title) +
+					HTMLworkDates.replace("%data%",job.dates) +
+					HTMLworkLocation.replace("%data%","Las Vegas, Nevada") +
+					HTMLworkDescription.replace("%data%",job.description) +
 					"</li>";
-			
-			
+
+
 		});
 		jobInfo.push(HTMLworkStart, jobs);
 		return jobInfo;
@@ -266,28 +266,28 @@ var model = {
 	},
 
 	formatProj(){
-		//give start to view and add ul, then add projs li 
+		//give start to view and add ul, then add projs li
 		var HTMLprojectStart = '<div class="project-entry"></div>';
 
 		let projArr = [];
 		 projs = "";
-		
+
 		$.each(model.projects,(i, proj) => {
-			projs += "<li>" + HTMLprojectTitle.replace("%data%", proj.title) + 
-			HTMLprojectDates.replace("%data%", proj.dates) + 
-			HTMLprojectDescription.replace("%data%", proj.description) + 
-			HTMLprojectImage.replace("%data%", proj.images) + 
+			projs += "<li>" + HTMLprojectTitle.replace("%data%", proj.title) +
+			HTMLprojectDates.replace("%data%", proj.dates) +
+			HTMLprojectDescription.replace("%data%", proj.description) +
+			HTMLprojectImage.replace("%data%", proj.images) +
 			"</li>";
 		});
 		projArr.push(HTMLprojectStart,projs);
-		
+
 		return projArr;
 		//$('body').append(projs);
 	},
-	
+
 }
-	var view = { 
-	
+	var view = {
+
 		init(){
 		this.showBio();
 		this.showEdu();
@@ -301,19 +301,19 @@ var model = {
 			$('#workExperience').append(jobInfo[0]);
 			$('.work-entry').append('<ul></ul>');
 			$('.work-entry ul').append(jobInfo[1]);
-			
+
 		},
-		
+
 		showBio(){
 			var bioInfo = controller.formatBio();
 			var lis = "";
 			////console.log(bioInfo);
 			$('#header').append(bioInfo[0],bioInfo[1], bioInfo[7],bioInfo[8]);
-			
+
 			for (let i = 2; i < 7; i++){
 				$('#topContacts').append(bioInfo[i]);
 			}
-			
+
 			//$('#topContacts').append();
 		},
 		showEdu(){
@@ -327,7 +327,7 @@ var model = {
 			$.each(eduInfo[1],(i,item) =>
 				$('.education-entry ul').append(eduInfo[1][i])
 			);
-			
+
 		},
 		showProj(){
 			var projInfo = controller.formatProj();
@@ -341,17 +341,17 @@ var model = {
 			$('#mapDiv').append(googleMap);
 		},
 		preventClick(){
-			$('a').click((event) => 
+			$('a').click((event) =>
 			 event.preventDefault()
 		);
 		}
-		
-	
-		
+
+
+
 	}
 
 		controller.init();
-		
+
 	function initializeMap() {
 
   var locations;
@@ -430,7 +430,7 @@ var model = {
     google.maps.event.addListener(marker, 'click', function() {
       // your code goes here!
 		infoWindow.open(map,marker);
-	  
+
     });
 
     // this is where the pin actually gets added to the map.
@@ -502,5 +502,5 @@ Uncomment the code below when you're ready to implement a Google Map!
  });
 
 
-	
+
 });
